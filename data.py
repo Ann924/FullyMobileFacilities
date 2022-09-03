@@ -12,7 +12,7 @@ def read_file(county_name: str):
         return df
 
 def clean_data(df_day: pd.DataFrame):
-    #drop meaningless columns
+    # TODO: drop meaningless columns
     
     HOME_SHIFT=1000000000
 
