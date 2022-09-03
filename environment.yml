@@ -1,0 +1,8 @@
+name: fullymobile
+channels:
+  - defaults
+dependencies:
+  - jupyter=1.0.0=py310haa95532_8
+  - numpy=1.23.1=py310h6d2d95c_0
+  - pandas=1.4.3=py310hd77b12b_0
+prefix: C:\Users\al146\miniconda3\envs\fullymobile
