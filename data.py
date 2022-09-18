@@ -38,11 +38,11 @@ def get_location_directions(df: pd.DataFrame):
 def find_potential_facilities(df: pd.DataFrame):
     return set(df[df["activity_type"]!=1].lid)
 
-def random_filter_spread(df:pd.DataFrame, spread = 7, random_state=42):
+def random_filter_spread(df:pd.DataFrame, spread = 60, random_state=42):
     
     random.seed(random_state)
     
-    drop_pids = set(pid for pid in df.pid if random.randint(1, spread) == 1)
+    drop_pids = set(pid for pid in set(df.pid) if random.randint(1, spread) != 1)
     df_sparse = df.drop(df[df["pid"].isin(drop_pids)].index, axis = 0)
     
     return df_sparse
