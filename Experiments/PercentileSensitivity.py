@@ -10,7 +10,7 @@ import time
 day = 5
 start = 6
 end = 20
-m = 5
+m = 3
 k_facs = 5
 
 potential_facilities, location_directory, pid_assignment = data.get_data("charlottesville_city", day, start, end)
