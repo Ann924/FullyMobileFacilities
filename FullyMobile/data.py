@@ -68,7 +68,6 @@ def pid_hour_breakdown(df: pd.DataFrame, day: int, start_hour: int, end_hour: in
     return df_pid.to_frame()
 
 def random_filter_location(df:pd.DataFrame, random_state=42):
-    
     random.seed(random_state)
     
     df["condensed"] = df["combined_loc"].apply(lambda x: [(h, l[0]) for h, loc in x.items() for l in loc])
@@ -90,7 +89,7 @@ def random_filter_location(df:pd.DataFrame, random_state=42):
 
     return df_selected.to_dict({})
 
-def get_data(county_name: str, day:int, start_hour: int, end_hour: int):
+def get_data(county_name: str, day:int, start_hour: int, end_hour: int, random_state=42):
 
     df_full = read_file(county_name)
     df_clean = clean_data(df_full, county_name)
@@ -99,9 +98,9 @@ def get_data(county_name: str, day:int, start_hour: int, end_hour: int):
     potential_facilities = find_potential_facilities(df_clean)
     location_directory = get_location_directions(df_clean)
 
-    df_sparse = random_filter_spread(df_clean)
+    df_sparse = random_filter_spread(df_clean, random_state=random_state)
     df_pid = pid_hour_breakdown(df_sparse, day, start_hour, end_hour)
-    pid_assignment = random_filter_location(df_pid)
+    pid_assignment = random_filter_location(df_pid, random_state=random_state)
 
     return potential_facilities, location_directory, pid_assignment
 

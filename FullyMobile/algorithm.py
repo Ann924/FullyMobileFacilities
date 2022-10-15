@@ -97,12 +97,10 @@ def _locate_facilities(location_directory, radius: int, pairwise_disjoint, locat
     
     return list(facilities)
 
-def stationary_supplier(potential_facilities, location_directory, pid_assignment, k_facs):
-    clients = set()
-    for key, vals in pid_assignment.items():
-        clients = clients.union(vals)
+def stationary_supplier(potential_facilities, location_directory, pid_assignment, k_facs, lower_limit = 0.1, upper_limit = 20):
+
+    facs = k_supplier(potential_facilities, location_directory, pid_assignment, k_facs, lower_limit = lower_limit, upper_limit = upper_limit)
     
-    facs = k_supplier(potential_facilities, location_directory, pid_assignment, k_facs)
     return [[f]*len(pid_assignment.keys()) for f in facs]
 
 """
