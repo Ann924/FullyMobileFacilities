@@ -323,7 +323,7 @@ def calculate_reachable(potential_facilities, location_directory, m, n_jobs = 40
     reachable_dict = {pf: reachable for pf,reachable in results}
     return reachable_dict
 
-def cover_fac_kary(potential_facilities, location_directory, pid_assignment, m, k_facs, lower_limit = 0.5, upper_limit = 3, n_jobs = 40):
+def cover_fac_kary(potential_facilities, location_directory, pid_assignment, m, k_facs, lower_limit = 0.5, upper_limit = 10, n_jobs = 40):
 
     l = lower_limit
     r = upper_limit

@@ -20,13 +20,15 @@ for file in cover_runs:
         seed = json.load(f)["seed"]
         random_seeds.add(seed)
 
-random_seeds = sorted(list(random_seeds))
+random_seeds = [45618]
 
-for seed in random_seeds:
+#45489
+
+for seed in random_seeds[::-1]:
     
     prev_baseline_runs = [run for run in os.listdir(PROJECT_ROOT/"Experiments"/"output"/"movement_sensitivity"/"baseline") if run.endswith('.json') and "albe" in run]
     
-    if f"albe_movement_budget_pt2_{seed}.json" in prev_baseline_runs:
+    if f"albe_movement_budget_pt1_{seed}.json" in prev_baseline_runs:
         print(seed)
         continue
 
@@ -39,9 +41,9 @@ for seed in random_seeds:
     
     #for travel in range(75, 85, 5):   #pt3
     
-    for travel in range(55, 85, 5):    #pt2
+    #for travel in range(55, 85, 5):    #pt2
     
-    #for travel in range(10, 55, 5):     #pt1
+    for travel in range(10, 55, 5):     #pt1
     
     #for travel in range(10, 105, 5):
         
@@ -54,7 +56,7 @@ for seed in random_seeds:
             
             prev_baseline_runs = [run for run in os.listdir(PROJECT_ROOT/"Experiments"/"output"/"movement_sensitivity"/"baseline") if run.endswith('.json') and "albe" in run]
             
-            if f"albe_movement_budget_pt2_{seed}.json" in prev_baseline_runs:
+            if f"albe_movement_budget_pt1_{seed}.json" in prev_baseline_runs:
                 print(seed)
                 seed_completed = True
                 break
@@ -71,6 +73,6 @@ for seed in random_seeds:
     if seed_completed:
         continue
     
-    with open(PROJECT_ROOT/"Experiments"/"output"/"movement_sensitivity"/"baseline"/f"albe_movement_budget_pt2_{seed}.json", "w") as f:
+    with open(PROJECT_ROOT/"Experiments"/"output"/"movement_sensitivity"/"baseline"/f"albe_movement_budget_pt1_{seed}.json", "w") as f:
         json.dump({"seed": seed, "baseline_runs": baseline_runs}, f)
 

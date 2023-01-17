@@ -11,16 +11,16 @@ day = 5
 start = 6
 end = 20
 
-random_seeds = []
+random_seeds = [408363710]
 
 cover_runs = [run for run in os.listdir(PROJECT_ROOT/"Experiments"/"output"/"movement_sensitivity"/"cover") if run.endswith('.json') and "cville" in run]
 
-for file in cover_runs:
-    with open(PROJECT_ROOT/"Experiments"/"output"/"movement_sensitivity"/"cover"/file) as f:
-        seed = json.load(f)["seed"]
-        random_seeds.append(seed)
+#for file in cover_runs:
+#    with open(PROJECT_ROOT/"Experiments"/"output"/"movement_sensitivity"/"cover"/file) as f:
+#        seed = json.load(f)["seed"]
+#        random_seeds.append(seed)
 
-random_seeds = sorted(random_seeds)
+#random_seeds = sorted(random_seeds)
 
 for seed in random_seeds[::-1]:
     
